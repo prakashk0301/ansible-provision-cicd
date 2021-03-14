@@ -1,0 +1,16 @@
+---
+- hosts: localhost                                             # localhost: where you configure aws access key & secret key
+  vars:
+    ami_id: ami-0de9f803fcac87f46
+    instance_size: t2.micro
+  tasks:
+    - name: "create an instance"
+      ec2:
+        count: 1
+        group: default
+        image: '{{ ami_id }}'                                 # call ami_id variable 
+        assign_public_ip: yes
+        instance_type: '{{ instance_size }}'                  # call instance_size variable
+        key_name: dec-devops
+        region: eu-central-1
+        vpc_subnet_id: subnet-96c70dea
