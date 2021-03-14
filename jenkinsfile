@@ -6,6 +6,13 @@ stages
     stage ('scm checkout')
     { steps { git branch: 'master', url: 'https://github.com/prakashk0301/ansible-provision-cicd' } }
 
+
+    stage('send playbook from workspace to ansibler master server')
+    { 
+        steps {  sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible-master', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'ansible-playbook -i /etc/ansible/playbooks/ec2_provision_cicd.yml', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//etc//ansible//playbooks', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'ec2_provision_cicd.yml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])  }
+
+    }
+
 }
 
 }
