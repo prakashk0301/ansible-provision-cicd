@@ -9,7 +9,7 @@ stages
 
     stage('send playbook from workspace to ansibler master server')
     { 
-        steps {  sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible-master', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'ansible-playbook ec2_provision_cicd.yml', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//etc//ansible//playbooks', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'ec2_provision_cicd.yml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])  }
+        steps {  sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible-master', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'pwd', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//etc//ansible//playbooks', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'ec2_provision_cicd.yml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])  }
 
     }
 
